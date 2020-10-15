@@ -1,4 +1,6 @@
 version: "3"
 services:
-  pxe:
-    build: ./pxe
+  dhcp:
+    build: ./dhcp
+  tftp:
+    build: ./tftp
