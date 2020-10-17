@@ -13,14 +13,23 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 RUN yum install -y epel-release
 
 # TODO: Use nginx instead of apache
-RUN yum install -y cobbler httpd tftp
-
-RUN yum install -y pykickstart
+RUN yum install -y \
+        aria2 \
+        cobbler \
+        dhcp \
+        httpd \
+        pykickstart \
+        rsync \
+        tftp
 
 RUN mkdir -p /usr/share/cobbler/web
 
+ADD ./dhcp.template /etc/cobbler/
+ADD ./settings /etc/cobbler/
+ADD ./tftp /etc/xinetd.d/
+
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN systemctl enable cobblerd httpd tftp
+RUN systemctl enable cobblerd httpd rsyncd tftp
 
 ENTRYPOINT ["/usr/sbin/init"]
