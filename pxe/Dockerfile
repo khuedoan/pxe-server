@@ -12,10 +12,13 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
 
 RUN yum install -y epel-release
 
-RUN yum install -y cobbler httpd
+# TODO: Use nginx instead of apache
+RUN yum install -y cobbler httpd tftp
+
+RUN mkdir -p /usr/share/cobbler/web
 
 VOLUME [ "/sys/fs/cgroup" ]
 
-RUN systemctl enable cobblerd httpd
+RUN systemctl enable cobblerd httpd tftp
 
 ENTRYPOINT ["/usr/sbin/init"]
