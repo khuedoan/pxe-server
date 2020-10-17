@@ -1,6 +1,7 @@
 version: "3"
+
 services:
-  dhcp:
-    build: ./dhcp
-  tftp:
-    build: ./tftp
+  pxe:
+    build: ./pxe
+    cap_add:
+      - CAP_SYS_ADMIN
