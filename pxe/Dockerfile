@@ -15,6 +15,8 @@ RUN yum install -y epel-release
 # TODO: Use nginx instead of apache
 RUN yum install -y cobbler httpd tftp
 
+RUN yum install -y pykickstart
+
 RUN mkdir -p /usr/share/cobbler/web
 
 VOLUME [ "/sys/fs/cgroup" ]
