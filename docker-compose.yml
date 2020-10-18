@@ -8,3 +8,5 @@ services:
       - CAP_SYS_ADMIN
     network_mode: host
     privileged: true
+    volumes:
+      - ./mnt:/mnt
