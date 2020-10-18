@@ -13,6 +13,7 @@ services:
     build: ./nginx
     network_mode: host
     volumes:
-      - ./mnt:/usr/share/nginx/html
+      - ./mnt:/usr/share/nginx/html/CentOS
+      - ./kickstart:/usr/share/nginx/html/kickstart
     environment:
       NGINX_PORT: 80
