@@ -8,12 +8,11 @@ services:
     build: ./tftp
     network_mode: host
     volumes:
-      - ./tftp/tftpboot:/var/lib/tftpboot
-      - ./mnt:/mnt
+      - ./tftpboot:/var/lib/tftpboot
   nginx:
     build: ./nginx
     network_mode: host
     volumes:
-      - ./tftp/tftpboot/images/:/usr/share/nginx/html
+      - ./mnt:/usr/share/nginx/html
     environment:
       NGINX_PORT: 80
