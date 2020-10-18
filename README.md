@@ -2,8 +2,6 @@
 
 PXE Server running in Docker containers
 
-**WORK IN PROGRESS, DO NOT USE**
-
 ## Usage
 
 Download CentOS DVD image (you can use `curl` instead of `aria2`)
@@ -12,6 +10,7 @@ Download CentOS DVD image (you can use `curl` instead of `aria2`)
 mkdir images
 cd ./images
 aria2c -x 16 -s 16 "http://mirrors.nhanhoa.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-dvd1.iso"
+cd ..
 ```
 
 Mount the image
@@ -21,15 +20,25 @@ mkdir mnt
 sudo mount -t iso9660 images/CentOS-8.2.2004-x86_64-dvd1.iso $PWD/mnt -o loop,ro
 ```
 
-Get `shim` and `grub`
+Copy boot files
 
 ```sh
-mkdir tftp/tftpboot
-cp -pr ./mnt/BaseOS/Packages/shim-x64-15-11.el8.x86_64.rpm ./tftp/tftpboot
-cp -pr ./mnt/BaseOS/Packages/grub2-efi-x64-2.02-81.el8.x86_64.rpm ./tftp/tftpboot/
+cp ./mnt/images/pxeboot/{initrd.img,vmlinuz} ./tftpboot
+cp ./mnt/EFI/BOOT/grubx64.efi ./tftpboot
 ```
+
+Create kickstart config based on the template
+
+```sh
+cp ./kickstart/centos8.cfg.tpl ./kickstart/centos8.cfg
+vim ./kickstart/centos8.cfg # Replace {{ VARIABLE }} with your value
+# Also replace the server IP
+```
+
+Start the server
 
 ```sh
 docker-compose up --build
-docker-compose exec cobbler sync
 ```
+
+Then power on your clients.
