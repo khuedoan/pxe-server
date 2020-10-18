@@ -1,4 +1,6 @@
-iso/
+images/
 mnt/
+tftpboot/
 
-*.iso
+!tftpboot/grub.cfg
+kickstart/centos8.cfg
