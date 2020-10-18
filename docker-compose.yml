@@ -1,12 +1,19 @@
 version: "3"
 
 services:
-  # TODO: Split into multiple containers
-  pxe:
-    build: ./pxe
-    cap_add:
-      - CAP_SYS_ADMIN
+  dhcp:
+    build: ./dhcp
     network_mode: host
-    privileged: true
+  tftp:
+    build: ./tftp
+    network_mode: host
     volumes:
+      - ./tftp/tftpboot:/var/lib/tftpboot
       - ./mnt:/mnt
+  nginx:
+    build: ./nginx
+    network_mode: host
+    volumes:
+      - ./tftp/tftpboot/images/:/usr/share/nginx/html
+    environment:
+      NGINX_PORT: 80
