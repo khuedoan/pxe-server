@@ -2,6 +2,12 @@
 
 PXE Server running in Docker containers
 
+## Supported operating systems
+
+- [x] CentOS (kickstart)
+- [ ] Debian (preseed)
+- [ ] Windows (Autounattend.xml)
+
 ## Usage
 
 Download CentOS DVD image (you can use `curl` instead of `aria2`)
