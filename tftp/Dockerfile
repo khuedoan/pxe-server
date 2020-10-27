@@ -1,5 +1,5 @@
-FROM centos:8
+FROM alpine:3
 
-RUN dnf install -y tftp-server
+RUN apk add tftp-hpa
 
 CMD [ "in.tftpd", "-L", "-s", "/var/lib/tftpboot" ]
