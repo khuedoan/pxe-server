@@ -4,7 +4,7 @@ RUN apk add dhcp gettext
 
 RUN touch /var/lib/dhcp/dhcpd.leases
 
-COPY dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
+COPY dhcpd.conf /etc/dhcp/dhcpd.conf
 
 COPY ./docker-entrypoint.sh /
 
