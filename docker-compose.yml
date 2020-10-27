@@ -4,6 +4,13 @@ services:
   dhcp:
     build: ./dhcp
     network_mode: host
+    environment:
+      SUBNET: "192.168.1.0"
+      NETMASK: "255.255.255.0"
+      ROUTERS: "192.168.1.1"
+      RANGE_START: "192.168.1.11"
+      RANGE_END: "192.168.1.99"
+      NEXT_SERVER: "192.168.1.19"
   tftp:
     build: ./tftp
     network_mode: host

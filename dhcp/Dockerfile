@@ -1,10 +1,10 @@
 FROM alpine:3
 
-RUN apk add dhcp
+RUN apk add dhcp gettext
 
 RUN touch /var/lib/dhcp/dhcpd.leases
 
-COPY dhcpd.conf /etc/dhcp/dhcpd.conf
+COPY dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
 
 COPY ./docker-entrypoint.sh /
 
