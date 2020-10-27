@@ -1,6 +1,8 @@
-FROM centos:8
+FROM alpine:3
 
-RUN dnf install -y dhcp-server
+RUN apk add dhcp
+
+RUN touch /var/lib/dhcp/dhcpd.leases
 
 ADD dhcpd.conf /etc/dhcp/dhcpd.conf
 
