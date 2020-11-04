@@ -24,7 +24,11 @@ skipx
 services --enabled="chronyd"
 # System timezone
 timezone Asia/Ho_Chi_Minh --isUtc
+
+# Create user
 user --groups=wheel --name={{ USERNAME }} --password={{ ENCRYPTED_PASSWORD }} --iscrypted --gecos="{{ USERNAME }}"
+# Add SSH key
+sshkey --username=root "{{ SSH_PUBLIC_KEY }}"
 
 %packages
 @^minimal-environment
