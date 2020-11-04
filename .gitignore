@@ -3,4 +3,4 @@ mnt/
 tftpboot/
 
 !tftpboot/grub.cfg
-kickstart/centos8.cfg
+kickstart/centos8.ks

@@ -38,8 +38,8 @@ cp ./mnt/EFI/BOOT/grubx64.efi ./tftpboot
 Create kickstart config based on the template
 
 ```sh
-cp ./kickstart/centos8.cfg.tpl ./kickstart/centos8.cfg
-vim ./kickstart/centos8.cfg # Replace {{ VARIABLE }} with your value
+cp ./kickstart/centos8.ks.tpl ./kickstart/centos8.ks
+vim ./kickstart/centos8.ks # Replace {{ VARIABLE }} with your value
 # Also replace the server IP
 ```
 
