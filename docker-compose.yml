@@ -1,9 +1,6 @@
 version: "3"
 
 services:
-  wakeonlan:
-    build: ./wakeonlan
-    network_mode: host
   dhcp:
     build: ./dhcp
     network_mode: host
