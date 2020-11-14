@@ -1,7 +1,6 @@
 images/
-kickstart/
 mnt/
 tftpboot/
 
 !tftpboot/grub.cfg
-*.template
+*.ks
