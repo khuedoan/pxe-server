@@ -1,6 +1,8 @@
 images/
+kickstart/config/
 mnt/
 tftpboot/
 
+!kickstart/config/00-00-00-00-00-00.ks.tpl
 !tftpboot/grub.cfg
 kickstart/centos8.ks
