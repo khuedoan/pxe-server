@@ -1,3 +1,8 @@
+%pre --interpreter=/bin/sh
+mac=$(ip --brief link show dev {{ NETWORK_DEVICE }} | tr -s ' ' | cut -d ' ' -f 3 | sed 's/:/-/g')
+curl "http://{{ PXE_SERVER }}/kickstart/config/$mac.ks" > /tmp/network.ks
+%end
+
 #version=RHEL8
 ignoredisk --only-use={{ DISK }}
 autopart --type=lvm
@@ -11,8 +16,7 @@ keyboard --vckeymap=us --xlayouts='us'
 lang en_US.UTF-8
 
 # Network information
-network  --bootproto=dhcp --device={{ NETWORK_DEVICE }} --ipv6=auto --activate
-network  --hostname={{ HOSTNAME }}
+%include /tmp/network.ks
 repo --name="AppStream" --baseurl=http://{{ PXE_SERVER }}/CentOS/AppStream
 # Use network installation
 url --url="http://{{ PXE_SERVER }}/CentOS/"
