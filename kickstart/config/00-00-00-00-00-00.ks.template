@@ -1,2 +1,2 @@
-network  --bootproto=static --device=$NETWORK_DEVICE --ip=$IP --gateway=$GATEWAY --nameserver=$NAMESERVER_1 --nameserver=$NAMESERVER_2 --netmask=$NETMASK --ipv6=auto --activate
+network  --bootproto=static --device=$NETWORK_DEVICE --ip=$IP --gateway=$GATEWAY --nameserver=$DNS1 --nameserver=$DNS2 --netmask=$NETMASK --ipv6=auto --activate
 network  --hostname=$HOSTNAME
