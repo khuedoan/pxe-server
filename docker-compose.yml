@@ -10,7 +10,7 @@ services:
       ROUTERS: "192.168.1.1"
       RANGE_START: "192.168.1.11"
       RANGE_END: "192.168.1.99"
-      NEXT_SERVER: "192.168.1.19"
+      NEXT_SERVER: "192.168.1.21"
   tftp:
     build: ./tftp
     network_mode: host
