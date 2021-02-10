@@ -21,8 +21,7 @@ services:
   http:
     build: ./http
     network_mode: host
-    # volumes:
-    #   - ./mnt:/usr/share/nginx/html/CentOS
-    #   - ./kickstart:/usr/share/nginx/html/kickstart
+    volumes:
+      - ./mnt:/usr/share/nginx/html/CentOS
     environment:
       NGINX_PORT: 80

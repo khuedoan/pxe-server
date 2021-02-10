@@ -1,13 +1,13 @@
 %pre --interpreter=/bin/sh
-mac=$(ip --brief link show dev {{ NETWORK_DEVICE }} | tr -s ' ' | cut -d ' ' -f 3 | sed 's/:/-/g')
-curl "http://{{ PXE_SERVER }}/kickstart/config/$mac.ks" > /tmp/network.ks
+MAC=$(ip --brief link show dev $NETWORK_DEVICE | tr -s ' ' | cut -d ' ' -f 3 | sed 's/:/-/g')
+curl "http://$PXE_SERVER/kickstart/network/$MAC.ks" > /tmp/network.ks
 %end
 
 #version=RHEL8
-ignoredisk --only-use={{ DISK }}
+ignoredisk --only-use=$DISK
 autopart --type=lvm
 # Partition clearing information
-clearpart --all --initlabel --drives={{ DISK }}
+clearpart --all --initlabel --drives=$DISK
 # Do not use graphical install
 text
 # Keyboard layouts
@@ -17,9 +17,9 @@ lang en_US.UTF-8
 
 # Network information
 %include /tmp/network.ks
-repo --name="AppStream" --baseurl=http://{{ PXE_SERVER }}/CentOS/AppStream
+repo --name="AppStream" --baseurl=http://$PXE_SERVER/CentOS/AppStream
 # Use network installation
-url --url="http://{{ PXE_SERVER }}/CentOS/"
+url --url="http://$PXE_SERVER/CentOS/"
 # Disable Setup Agent on first boot
 firstboot --disable
 # Do not configure the X Window System
@@ -30,9 +30,9 @@ services --enabled="chronyd"
 timezone Asia/Ho_Chi_Minh --isUtc
 
 # Create user
-user --groups=wheel --name={{ USERNAME }} --password={{ ENCRYPTED_PASSWORD }} --iscrypted --gecos="{{ USERNAME }}"
+user --groups=wheel --name=$USERNAME --password=$ENCRYPTED_PASSWORD --iscrypted --gecos="$USERNAME"
 # Add SSH key
-sshkey --username=root "{{ SSH_PUBLIC_KEY }}"
+sshkey --username=root "$SSH_PUBLIC_KEY"
 
 %packages
 @^minimal-environment

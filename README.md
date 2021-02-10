@@ -15,16 +15,12 @@ PXE Server running in Docker containers
 Download CentOS DVD image (you can use `curl` instead of `aria2`)
 
 ```sh
-mkdir images
-cd ./images
-aria2c -x 16 -s 16 "http://mirrors.nhanhoa.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-dvd1.iso"
-cd ..
+aria2c -d ./images -x 16 -s 16 "http://mirrors.nhanhoa.com/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-dvd1.iso"
 ```
 
 Mount the image
 
 ```sh
-mkdir mnt
 sudo mount -t iso9660 images/CentOS-8.2.2004-x86_64-dvd1.iso $PWD/mnt -o loop,ro
 ```
 
