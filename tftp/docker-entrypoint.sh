@@ -2,6 +2,7 @@
 
 set -e
 
-echo "$(envsubst < /etc/dhcp/dhcpd.conf)" > /etc/dhcp/dhcpd.conf
+echo "$(envsubst < /var/lib/tftpboot/grub.cfg)" > /var/lib/tftpboot/grub.cfg
+cat /var/lib/tftpboot/grub.cfg
 
 exec "$@"
