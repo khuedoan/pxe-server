@@ -4,8 +4,7 @@ RUN apk add tftp-hpa gettext
 
 COPY grub.cfg /var/lib/tftpboot/grub.cfg
 
-COPY ./docker-entrypoint.sh /
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+COPY start.sh /start.sh
 
-CMD [ "in.tftpd", "--foreground", "--secure", "/var/lib/tftpboot" ]
+CMD [ "/start.sh" ]

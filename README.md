@@ -28,13 +28,6 @@ mkdir mnt
 sudo mount -t iso9660 images/CentOS-8.2.2004-x86_64-dvd1.iso $PWD/mnt -o loop,ro
 ```
 
-Copy boot files
-
-```sh
-cp ./mnt/images/pxeboot/{initrd.img,vmlinuz} ./tftpboot
-cp ./mnt/EFI/BOOT/grubx64.efi ./tftpboot
-```
-
 Create kickstart config based on the template
 
 ```sh

@@ -14,13 +14,15 @@ services:
   tftp:
     build: ./tftp
     network_mode: host
+    environment:
+      - PXE_SERVER
     volumes:
-      - ./tftpboot:/var/lib/tftpboot
-  nginx:
-    build: ./nginx
+      - ./mnt:/mnt
+  http:
+    build: ./http
     network_mode: host
-    volumes:
-      - ./mnt:/usr/share/nginx/html/CentOS
-      - ./kickstart:/usr/share/nginx/html/kickstart
+    # volumes:
+    #   - ./mnt:/usr/share/nginx/html/CentOS
+    #   - ./kickstart:/usr/share/nginx/html/kickstart
     environment:
       NGINX_PORT: 80

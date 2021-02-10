@@ -6,8 +6,6 @@ RUN touch /var/lib/dhcp/dhcpd.leases
 
 COPY dhcpd.conf /etc/dhcp/dhcpd.conf
 
-COPY ./docker-entrypoint.sh /
+COPY start.sh /start.sh
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
-
-CMD [ "dhcpd", "-f", "-cf", "/etc/dhcp/dhcpd.conf" ]
+CMD [ "/start.sh" ]
