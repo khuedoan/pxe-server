@@ -1,7 +1,6 @@
-images/
-mnt/
 tftpboot/
 
 !tftpboot/grub.cfg
+*.iso
 *.ks
 .env
