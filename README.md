@@ -1,5 +1,7 @@
 # PXE Server
 
+Deprecated in favor of [PXE server Ansible role](https://github.com/khuedoan/homelab/tree/master/metal/roles/pxe-server)
+
 **WORK IN PROGRESS**
 
 PXE Server running in Docker containers
